@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Armería Imperial | Pistolas Premium</title>
+    <meta
+      name="description"
+      content="Tienda de pistolas premium con modelos de alto rendimiento, asesoría especializada y atención personalizada."
+    />
+    <style>
+      :root {
+        --bg: #090b0d;
+        --bg-2: #11161a;
+        --panel: #121a1f;
+        --panel-strong: #0c1115;
+        --card: #171f25;
+        --gold: #d9b15d;
+        --gold-strong: #f0c977;
+        --text: #f5f3ee;
+        --muted: #b7c0c7;
+        --line: rgba(255, 255, 255, 0.08);
+        --shadow: rgba(0, 0, 0, 0.5);
+        --success: #78d3a5;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background:
+          radial-gradient(circle at top, rgba(217, 177, 93, 0.12), transparent 25%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+        color: var(--text);
+      }
+
+      img { max-width: 100%; display: block; }
+      a { color: inherit; text-decoration: none; }
+
+      .container {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(9, 11, 13, 0.88);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .topbar-inner {
+        min-height: 78px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--gold), #8f6a1e);
+        display: grid;
+        place-items: center;
+        color: #171717;
+        font-weight: 900;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      nav a:hover { color: var(--text); }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 22px;
+        border-radius: 12px;
+        border: 1px solid transparent;
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--gold), var(--gold-strong));
+        color: #151515;
+        box-shadow: 0 18px 28px rgba(217, 177, 93, 0.2);
+      }
+
+      .btn-secondary {
+        border-color: var(--line);
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text);
+      }
+
+      .hero {
+        padding: 58px 0 42px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 36px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(217, 177, 93, 0.12);
+        border: 1px solid rgba(217, 177, 93, 0.3);
+        color: var(--gold-strong);
+        font-size: 0.76rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(3rem, 5vw, 5.2rem);
+        line-height: 0.96;
+        letter-spacing: -0.065em;
+      }
+
+      .lead {
+        margin: 0;
+        max-width: 620px;
+        color: var(--muted);
+        line-height: 1.8;
+        font-size: 1.08rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 28px;
+      }
+
+      .stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 26px;
+        margin-top: 34px;
+      }
+
+      .stat {
+        min-width: 120px;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: clamp(1.8rem, 2vw, 2.5rem);
+        margin-bottom: 6px;
+      }
+
+      .stat span {
+        color: var(--muted);
+      }
+
+      .hero-visual {
+        position: relative;
+        min-height: 620px;
+      }
+
+      .visual-card {
+        position: absolute;
+        border-radius: 30px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        box-shadow: 0 28px 42px var(--shadow);
+      }
+
+      .main-visual {
+        inset: 0 34px 32px 0;
+        background:
+          linear-gradient(180deg, rgba(10, 12, 14, 0.15), rgba(0, 0, 0, 0.52)),
+          url('https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      }
+
+      .floating-card {
+        right: 0;
+        bottom: 28px;
+        width: 250px;
+        padding: 18px 20px;
+        background: rgba(17, 25, 30, 0.92);
+      }
+
+      .floating-card .label {
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-size: 0.7rem;
+      }
+
+      .floating-card h3 {
+        margin: 10px 0 12px;
+        font-size: 1.6rem;
+      }
+
+      .floating-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--muted);
+      }
+
+      .floating-row strong {
+        color: var(--text);
+        font-size: 1.7rem;
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 28px;
+      }
+
+      .section-head h2 {
+        margin: 0;
+        font-size: clamp(2rem, 3vw, 3rem);
+        letter-spacing: -0.04em;
+      }
+
+      .text-link {
+        color: var(--gold-strong);
+        font-weight: 700;
+      }
+
+      .catalog-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .product-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 18px 40px var(--shadow);
+      }
+
+      .product-media {
+        height: 250px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .product-body {
+        padding: 20px 20px 22px;
+      }
+
+      .product-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: rgba(120, 211, 165, 0.12);
+        color: var(--success);
+        border: 1px solid rgba(120, 211, 165, 0.18);
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .product-card h3 {
+        margin: 0 0 10px;
+        font-size: 1.5rem;
+      }
+
+      .product-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .product-meta {
+        margin-top: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .product-meta span {
+        color: var(--muted);
+      }
+
+      .price {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--text);
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .feature {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 30px 22px;
+      }
+
+      .feature-icon {
+        width: 58px;
+        height: 58px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 18px;
+        background: rgba(217, 177, 93, 0.12);
+        font-size: 1.7rem;
+      }
+
+      .feature h3 {
+        margin: 0 0 10px;
+        font-size: 1.38rem;
+      }
+
+      .feature p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .reviews {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .review {
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.02);
+        padding: 24px 22px;
+      }
+
+      .stars {
+        color: var(--gold-strong);
+        letter-spacing: 0.18em;
+        font-size: 1.1rem;
+        margin-bottom: 14px;
+      }
+
+      .review p {
+        margin: 0 0 18px;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .reviewer {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .avatar {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #d5b66f, #786138);
+        color: #161616;
+        font-weight: 800;
+        display: grid;
+        place-items: center;
+      }
+
+      .reviewer strong {
+        display: block;
+      }
+
+      .reviewer span {
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .cta-box {
+        background: linear-gradient(135deg, rgba(217, 177, 93, 0.12), rgba(255, 255, 255, 0.02));
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        padding: 34px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .cta-box h3 {
+        margin: 0 0 8px;
+        font-size: clamp(1.9rem, 2.2vw, 2.6rem);
+        letter-spacing: -0.04em;
+      }
+
+      .cta-box p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      footer {
+        padding: 26px 0 44px;
+        border-top: 1px solid var(--line);
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+        color: var(--muted);
+      }
+
+      @media (max-width: 980px) {
+        nav {
+          display: none;
+        }
+
+        .hero-grid,
+        .catalog-grid,
+        .feature-grid,
+        .reviews,
+        .cta-box {
+          grid-template-columns: 1fr;
+          display: grid;
+        }
+
+        .hero-visual {
+          min-height: 500px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .topbar-inner {
+          min-height: 68px;
+        }
+
+        .nav-actions {
+          gap: 8px;
+        }
+
+        .btn {
+          padding: 12px 16px;
+        }
+
+        .section-head {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand">
+          <div class="brand-mark">A</div>
+          <span>Armería Imperial</span>
+        </div>
+
+        <nav aria-label="Navegación principal">
+          <a href="#inicio">Inicio</a>
+          <a href="#catalogo">Catálogo</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#opiniones">Opiniones</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a class="btn btn-secondary" href="#catalogo">Ver catálogo</a>
+          <a class="btn btn-primary" href="#contacto">Reservar</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="inicio">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <span class="eyebrow">Precisión y confianza</span>
+            <h1>Pistolas de alto rendimiento.</h1>
+            <p class="lead">
+              Diseñadas para precisión, equilibrio y presencia. En Armería Imperial encontrarás
+              pistolas premium con acabados de lujo, tecnología avanzada y atención profesional
+              para cada cliente.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#catalogo">Comprar ahora</a>
+              <a class="btn btn-secondary" href="#servicios">Nuestros servicios</a>
+            </div>
+
+            <div class="stats" aria-label="Estadísticas">
+              <div class="stat">
+                <strong>3.1k+</strong>
+                <span>Compradores</span>
+              </div>
+              <div class="stat">
+                <strong>180+</strong>
+                <span>Modelos</span>
+              </div>
+              <div class="stat">
+                <strong>4.9/5</strong>
+                <span>Calificación</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="Pistola premium en exhibición">
+            <div class="visual-card main-visual"></div>
+            <div class="visual-card floating-card">
+              <div class="label">Modelo destacado</div>
+              <h3>Vanguard S</h3>
+              <div class="floating-row">
+                <span>Desde</span>
+                <strong>$1,499</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="catalogo">
+        <div class="container">
+          <div class="section-head">
+            <h2>Catálogo destacado</h2>
+            <a href="#contacto" class="text-link">Ver colección completa</a>
+          </div>
+
+          <div class="catalog-grid">
+            <article class="product-card">
+              <div class="product-media" style="background-image: url('https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1200&q=80');"></div>
+              <div class="product-body">
+                <div class="product-top">
+                  <span class="tag">Nuevo</span>
+                  <span>9 mm</span>
+                </div>
+                <h3>Vanguard S</h3>
+                <p>Diseño ergonómico, balance perfecto y precisión confirmada en cada disparo.</p>
+                <div class="product-meta">
+                  <span>Calibre</span>
+                  <span class="price">$1,499</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-media" style="background-image: url('https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=1200&q=80');"></div>
+              <div class="product-body">
+                <div class="product-top">
+                  <span class="tag">Top</span>
+                  <span>.40</span>
+                </div>
+                <h3>Sentinel Pro</h3>
+                <p>Potencia controlada con un sistema de seguridad avanzado y agarre premium.</p>
+                <div class="product-meta">
+                  <span>Calibre</span>
+                  <span class="price">$1,780</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-media" style="background-image: url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1200&q=80');"></div>
+              <div class="product-body">
+                <div class="product-top">
+                  <span class="tag">Elite</span>
+                  <span>.45</span>
+                </div>
+                <h3>Monarch R</h3>
+                <p>Acabado exclusivo, fuego preciso y máxima confianza para uso exigente.</p>
+                <div class="product-meta">
+                  <span>Calibre</span>
+                  <span class="price">$2,120</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="servicios">
+        <div class="container">
+          <div class="section-head">
+            <h2>¿Por qué elegirnos?</h2>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature">
+              <div class="feature-icon">⚙️</div>
+              <h3>Fabricación premium</h3>
+              <p>Modelos seleccionados con materiales de alta resistencia y acabados refinados.</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-icon">🛡️</div>
+              <h3>Asesoría experta</h3>
+              <p>Te guiamos según tus necesidades para elegir la pistola ideal con total confianza.</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-icon">🚚</div>
+              <h3>Entrega segura</h3>
+              <p>Embalaje profesional, manejo cuidadoso y atención rápida antes y después de tu compra.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="opiniones">
+        <div class="container">
+          <div class="section-head">
+            <h2>Opiniones de clientes</h2>
+          </div>
+
+          <div class="reviews">
+            <article class="review">
+              <div class="stars">★★★★★</div>
+              <p>“Una experiencia increíble. La calidad de la pistola y la atención recibida superaron mis expectativas.”</p>
+              <div class="reviewer">
+                <div class="avatar">J</div>
+                <div>
+                  <strong>Javier M.</strong>
+                  <span>Cliente premium</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="review">
+              <div class="stars">★★★★★</div>
+              <p>“La selección es excelente y la asesoría fue impecable. Me ayudaron a elegir el modelo perfecto.”</p>
+              <div class="reviewer">
+                <div class="avatar">A</div>
+                <div>
+                  <strong>Andrés T.</strong>
+                  <span>Comprador frecuente</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="review">
+              <div class="stars">★★★★★</div>
+              <p>“Un sitio muy profesional, con productos de alto nivel y una atención impecable en cada detalle.”</p>
+              <div class="reviewer">
+                <div class="avatar">R</div>
+                <div>
+                  <strong>Ricardo P.</strong>
+                  <span>Cliente elite</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="cta-box">
+            <div>
+              <h3>Encuentra la mejor pistola para ti.</h3>
+              <p>Asesoría personalizada, modelos premium y entrega con total seriedad.</p>
+            </div>
+            <a class="btn btn-primary" href="#contacto">Solicitar consulta</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contacto">
+      <div class="container footer-inner">
+        <div><strong>Armería Imperial</strong> · Pistolas premium</div>
+        <div>ventas@armeriaimperial.com · +52 555 123 4567</div>
+      </div>
+    </footer>
+  </body>
+</html>
